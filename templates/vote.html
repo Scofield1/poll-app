@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<section>
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="bg-light p-5">
+          <div>
+              <img src="https://mc-42b990dd-5dae-4647-b81e-424724-cdn-endpoint.azureedge.net/-/media/blogs/2020/castyourvote.png?rev=ace279612ee34bbea2e02a5c1b112d66&h=300&w=533&la=en&hash=47092D499633A5A612790573F1755DD0" class="img-fluid">
+          </div>
+          <div class="mt-3">
+              <h3>{{ model_questions }}</h3>
+          </div>
+          <hr>
+          <form method="POST" action="">{% csrf_token %}
+        <div class="card">
+          <ul class="list-group list-group-flush">
+              {% for option in options %}
+            <li class="list-group-item ms-2">
+                <input type="radio" value="{{ option.id }}" class="form-check-input" name="choice" required>
+                {{ option }}
+            </li>
+              {% endfor %}
+          </ul>
+        </div>
+          <button type="submit" class="btn btn-success mt-4">Vote<span><i class="bi bi-check"></i></span></button>
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
