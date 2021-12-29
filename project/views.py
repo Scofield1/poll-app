@@ -39,6 +39,7 @@ def vote(request, pk):
         selected_option = options.get(id=input_value)
         selected_option.vote += 1
         selected_option.save()
+        return redirect('/')
     return render(request, 'vote.html', {'model_questions': model_question, 'options': options})
 
 

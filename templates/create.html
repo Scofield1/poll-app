@@ -6,7 +6,7 @@
     <div class="row my-5">
         <div class="col-md-6 offset-md-3">
             <div class="p-5 bg-light">
-                <form method="POST" action="results/{{ model_question.id }}">{% csrf_token %}
+                <form method="POST" action="create">{% csrf_token %}
                     <b>{{ form_question|crispy }}</b>
                     <input type="submit" value="Add Question" class="btn btn-success my-3"/>
                 </form>
