@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
+{% block title %} Results Page {% endblock title %}
 {% block content %}
 <section>
     <div class="row mt-5">
@@ -11,33 +12,54 @@
                 </div>
                 <h3>{{ model_question }}</h3>
                 <hr>
-            <section>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Parties</th>
-                        <th scope="col">Vote Share</th>
-                        <th scope="col">Progress Bar</th>
-                    </tr>
-                    </thead>
-                    {% for option in options %}
-                    <tbody>
-                    <tr>
-                        <td>{{ option }}</td>
-                        <td>
-                            <span class="badge bg-dark">{{ option.vote }}%</span>
-                        </td>
-                        <td>
+                <section>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Parties</th>
+                            <th scope="col">Vote Share</th>
+                            <th scope="col">Progress Bar</th>
+                        </tr>
+                        </thead>
+                        {% for option in options %}
+                        <tbody>
+                        <tr>
+                            <td>{{ option }}</td>
+                            <td>
+                                <span class="badge bg-dark">{{ option.vote }}%</span>
+                            </td>
+                            <td>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="{{ option.vote }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ option.vote }}%"></div>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                                         role="progressbar" aria-valuenow="{{ option.vote }}" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: {{ option.vote }}%"></div>
                                 </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
-            </section>
+                            </td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container py-5">
+        <div class="">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-4 bg-light">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="p-4 bg-light">
+                        <canvas id="myChart1" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

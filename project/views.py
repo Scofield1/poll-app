@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import QuestionForm, OptionForm
-from .models import Question, Option
+from .forms import *
+from .models import *
 
 
 def index(request):
@@ -37,7 +37,7 @@ def vote(request, pk):
     if request.method == 'POST':
         input_value = request.POST.get('choice')
         selected_option = options.get(id=input_value)
-        selected_option.vote += 1
+        selected_option.vote += 5
         selected_option.save()
         return redirect('/')
     return render(request, 'vote.html', {'model_questions': model_question, 'options': options})
@@ -47,6 +47,7 @@ def results(request, pk):
     model_question = Question.objects.get(id=pk)
     options = model_question.choices.all()
     return render(request, 'results.html', {'model_question': model_question, 'options': options})
+
 
 def delete(request, pk):
     model_question = Question.objects.filter(id=pk)
